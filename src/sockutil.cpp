@@ -11,12 +11,12 @@ int create_socket(int domain, int type, int protocol)
     return sockfd;
 }
 
-int bind_socket(int domain,int sockfd,int port=8888)
+int bind_socket(int domain,int sockfd,int port)
 {
     struct sockaddr_in addr;
     addr.sin_addr.s_addr=htonl(INADDR_ANY);
     addr.sin_family=domain;
-    addr.sin_port=port;
+    addr.sin_port=htons(port);
     int ret=bind(sockfd,(struct sockaddr*)&addr,sizeof(addr));
     return ret;
 }
@@ -36,7 +36,8 @@ int set_socket_reuseaddr(int sockfd)
     return ret;
 }
 
-ssize_t Read(int fd,void* buf,size_t len){
+ssize_t Read(int fd,void* buf,size_t len)
+{
     size_t n;
     do{
         n=read(fd, buf, len);
@@ -44,6 +45,23 @@ ssize_t Read(int fd,void* buf,size_t len){
     if(n<0){
         perror("read error");
         return n;
+    }
+    else if(n==0){
+        return n;
+    }
+    else{
+        return n;
+    }
+}
+
+ssize_t Write(int fd,const void* buf, size_t len)
+{
+    size_t n;
+    do{
+        n=write(fd, buf, len);
+    }while(n==EINTR);
+    if(n<0){
+        perror("write error");
     }
     else if(n==0){
         return n;
