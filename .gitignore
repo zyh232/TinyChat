@@ -1,0 +1,37 @@
+# Continue 配置 / AI 相关
+.continue/
+.continue
+**/.continue/
+
+# 编译产物
+build/
+bin/
+obj/
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+
+# 可执行文件（根据项目命名，比如你的服务器程序）
+server
+client
+*.out
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志 / 临时文件
+*.log
+*.tmp
+core
