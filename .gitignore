@@ -15,7 +15,7 @@ obj/
 *.dylib
 *.exe
 
-# 可执行文件（根据项目命名，比如你的服务器程序）
+# 可执行文件
 server
 client
 *.out
